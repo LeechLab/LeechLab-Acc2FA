@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign in – LeechLab oAuth</title>
+    <link rel="stylesheet" href="Style-Data/CSS/index.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="Style-Data/Images/LeechLogo.svg"
+    />
+  </head>
+  <body>
+    <video
+      autoplay
+      muted
+      loop
+      style="pointer-events: none"
+      class="videoBackground"
+      id="videoBackground"
+    >
+      <source
+        src="Style-Data/Images/TackleTanksCreation.mp4"
+        type="video/mp4"
+      />
+    </video>
+    <div class="container create_account">
+      <h2 id="si_message" class="show">Sign in with</h2>
+      <h2 id="v_message" class="show">Verify with</h2>
+      <h2 id="ca_message" class="show">Create account with</h2>
+      <img
+        class="logo"
+        alt="leechlab logo"
+        src="Style-Data/Images/LeechLogo_Full.svg"
+      />
+      <div class="form show" id="si">
+        <form id="sign_in">
+          <h3>Email or Username</h3>
+          <input
+            type="text"
+            id="user"
+            name="firstname"
+            placeholder="Enter a valid email/username..."
+          />
+          <h3>Password</h3>
+          <input
+            type="password"
+            id="pass"
+            name="current-password"
+            placeholder="Enter a valid password..."
+          />
+          <button
+            class="submit"
+            type="button"
+            onclick="signIn()"
+            onmouseover="this.style.cursor='pointer'"
+          >
+            SIGN IN
+          </button>
+        </form>
+        <a class="url" onclick="changePage('ca')"
+          >Don't have a LeechLab Account? Create one!</a
+        >
+      </div>
+      <div class="form show" id="ca">
+        <form id="create_account">
+          <h3>Username</h3>
+          <h4 id="u_error"></h4>
+          <input
+            type="text"
+            id="username"
+            name="Username"
+            placeholder="Create a username..."
+            required
+          />
+          <h3>Email</h3>
+          <h4 id="e_error"></h4>
+          <input
+            type="text"
+            id="email"
+            name="Email"
+            placeholder="Enter your email..."
+            required
+          />
+          <h3>Password</h3>
+          <h4 id="p_error"></h4>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Create a password..."
+            required
+          />
+          <h3>Confirm Password</h3>
+          <h4 id="conp_error"></h4>
+          <input
+            type="password"
+            id="confirmed_password"
+            name="confirmed_password"
+            placeholder="Confirm your password..."
+            required
+          />
+          <button
+            class="submit"
+            type="button"
+            onclick="create_account()"
+            onmouseover="this.style.cursor='pointer'"
+          >
+            CREATE ACCOUNT
+          </button>
+        </form>
+        <a class="url" onclick="changePage('si')"
+          >Already have a LeechLab Account? Sign in!</a
+        >
+      </div>
+      <div class="form show" id="v">
+        <form id="create_account">
+          <h3>
+            We sent you a 6-digit verification code! This has a limited time of
+            5 MINUTES. Check your email and copy the code here:
+          </h3>
+          <h4 id="vc_error"></h4>
+          <div class="verify">
+            <input
+              oninput="javascript: document.getElementById('code1').focus(); if (this.value.length > 0){ this.value = this.value.slice(0, 1); document.getElementById('code2').focus();}"
+              name="code"
+              id="code1"
+              type="number"
+              required
+            />
+            <input
+              oninput="javascript: document.getElementById('code1').focus(); if (this.value.length > 0){ this.value = this.value.slice(0, 1); document.getElementById('code3').focus();}"
+              name="code"
+              id="code2"
+              type="number"
+              required
+            />
+            <input
+              oninput="javascript: document.getElementById('code2').focus(); if (this.value.length > 0){ this.value = this.value.slice(0, 1); document.getElementById('code4').focus();}"
+              name="code"
+              id="code3"
+              type="number"
+              required
+            />
+            <input
+              oninput="javascript: document.getElementById('code3').focus(); if (this.value.length > 0){ this.value = this.value.slice(0, 1); document.getElementById('code5').focus();}"
+              name="code"
+              id="code4"
+              type="number"
+              required
+            />
+            <input
+              oninput="javascript: document.getElementById('code4').focus(); if (this.value.length > 0){ this.value = this.value.slice(0, 1); document.getElementById('code6').focus();}"
+              name="code"
+              id="code5"
+              type="number"
+              required
+            />
+            <input
+              oninput="javascript:if (this.value.length > 0){ this.value = this.value.slice(0, 1); verify();document.getElementById('submit').focus();}"
+              name="code"
+              id="code6"
+              type="number"
+              required
+            />
+          </div>
+          <button
+            class="submit"
+            id="submit"
+            type="button"
+            onclick="verify()"
+            onmouseover="this.style.cursor='pointer'"
+          >
+            VERIFY EMAIL
+          </button>
+        </form>
+        <h6>
+          Wait 30 seconds for a verification code. If you still do not recieve a
+          message:
+        </h6>
+        <a class="url" onclick="sendVerifyCode()"
+          >Send another verification code.</a
+        >
+      </div>
+    </div>
+  </body>
+  <script src="main.js"></script>
+</html>
